@@ -1,0 +1,92 @@
+Log in
+
+Sign up
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    
+
+    <link rel="stylesheet" href="d.css">
+    
+    
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+        
+            margin: 20px;
+            text-align: center;
+            
+        }
+        .form-container {   /* Styling for the form container */
+            background-color: rgb(239, 133, 98);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+            text-align: left;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {   /* Styling for text input, email input, and password input */
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {    /* Styling for the submit button */
+            background-color: #5a7a9d;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #577391;
+        }
+        .error-message {    /* Styling for error messages */
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+    <script>
+        function validateForm(event) {      /* Function to validate the form when it's submitted */
+            let name = document.getElementById("name").value;
+            let nameError = document.getElementById("nameError");
+            let nameRegex = /^[A-Za-z ]+$/;
+            
+            if (!nameRegex.test(name)) {       
+                nameError.style.display = "block";
+                event.preventDefault();
+            } else {
+                nameError.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Register</h1>
+    <div class="form-container">
+        <form onsubmit="validateForm(event)">
+            <label for="name">Full Name:</label>        
+            <input type="text" id="name" name="name" required>      <!-- Form container to wrap the registration form elements -->
+            <div id="nameError" class="error-message">Please enter a valid name (letters and spaces only).</div>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>  
