@@ -1,0 +1,69 @@
+// Function to read a matrix from the console
+function readMatrix() {
+    let matrix = [];
+    const rows = parseInt(prompt("Enter the number of rows:"));
+    const cols = parseInt(prompt("Enter the number of columns:"));
+
+    // Check if the matrix is square (needed for symmetry)
+    if (rows !== cols) {
+        console.log("❌ Matrix is not symmetric. It must be a square matrix.");
+        return null;
+    }
+
+    console.log(`Enter the matrix values row-wise (separated by space):`);
+
+    // Loop to read each row of the matrix
+    for (let i = 0; i < rows; i++) {
+        let rowValues = prompt(`Enter row ${i + 1} values:`)
+            .split(" ")
+            .map(Number);
+
+        // Check if the row has the correct number of elements
+        if (rowValues.length !== cols) {
+            console.log(`❌ Error: Row ${i + 1} does not have the correct number of elements.`);
+            return null;
+        }
+
+        matrix.push(rowValues);
+    }
+    return matrix;
+}
+
+// Function to check if the matrix is symmetric
+function isSymmetric(matrix) {
+    const n = matrix.length;
+
+    // Compare matrix with its transpose
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (matrix[i][j] !== matrix[j][i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Main function
+function main() {
+    const matrix = readMatrix();
+
+    // Validate matrix before checking symmetry
+    if (matrix === null) {
+        console.log("⚠️ Invalid matrix. Exiting...");
+        return;
+    }
+
+    console.log("Matrix entered:");
+    console.table(matrix);
+
+    // Check if the matrix is symmetric
+    if (isSymmetric(matrix)) {
+        console.log("✅ The matrix is symmetric.");
+    } else {
+        console.log("❌ The matrix is NOT symmetric.");
+    }
+}
+
+// Run the program
+main();
