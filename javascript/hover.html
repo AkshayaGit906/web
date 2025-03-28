@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Hover Example</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        img {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hover Over the Content!</h1>
+
+    <!-- Initial Image -->
+    <img id="image" src="https://th.bing.com/th/id/OIP.RNCQyNWNTaFBeT0yK7wH_gAAAA?rs=1&pid=ImgDetMain" alt="Default Image" width="300" height="200">
+    <p id="text">TO TRAVEL IS TO LIVE!...</p>
+
+    <script>
+        // Image Hover Event
+        document.getElementById('image').onmouseover = function() {
+            this.src = "https://www.thaitravelcenter.com/thailand/wp-content/uploads/2018/12/Khao-Sok-1.jpg";
+        };
+
+        document.getElementById('image').onmouseout = function() {
+            this.src = "https://th.bing.com/th/id/OIP.RNCQyNWNTaFBeT0yK7wH_gAAAA?rs=1&pid=ImgDetMain";
+        };
+
+        // Text Hover Event
+        document.getElementById('text').onmouseover = function() {
+            this.textContent = "TRAVEL BRINGS POWER & LOVE BACK INTO YOUR LIFE";
+        };
+
+        document.getElementById('text').onmouseout = function() {
+            this.textContent = "EXPLORE THE WORLD!";
+        };
+    </script>
+</body>
+</html>
